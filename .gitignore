@@ -5,7 +5,7 @@ target/
 !**/src/test/**/target/
 
 ### Custom Ignores ###
-index.html
+/src/main/webapp/WEB-INF/jsp/index.html
 
 ### STS ###
 .apt_generated
