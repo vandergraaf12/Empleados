@@ -7,10 +7,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -40,6 +42,21 @@ public class IndexControlador {
         logger.info("Empleado a agregar: " + empleado);
         empleadoServicio.guardarEmpleado(empleado);
         return "redirect:/"; // Redirige al path "/"
+    }
+
+    @RequestMapping(value="/editar", method = RequestMethod.GET)
+    public String mostrarEditar(@RequestParam int idEmpleado, ModelMap modelo){
+        Empleado empleado = empleadoServicio.buscarEmpleadoPorId(idEmpleado);
+        logger.info("Empleado a editar: " + empleado);
+        modelo.put("empleado", empleado);
+        return "editar"; // Mostrar editar.jsp
+    }
+
+    @RequestMapping(value = "/editar", method = RequestMethod.POST)
+    public String editar(@ModelAttribute("empleadoForma") Empleado empleado){
+        logger.info("Empleado a guardar (editar): " + empleado);
+        empleadoServicio.guardarEmpleado(empleado);
+        return "redirect:/"; // redirigimos al controlador "/"
     }
 
 }
