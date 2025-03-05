@@ -20,7 +20,7 @@
       <input type="number" step="any" class="form-control" id="sueldo" name="sueldo" value="${empleado.sueldo}">
     </div>
     <div class="text-center">
-      <button type="submit" class="btn btn-warning btn-sm me-3">Agregar</button>
+      <button type="submit" class="btn btn-warning btn-sm me-3">Guardar</button>
       <a href="${urlInicio}" class="btn btn-danger btn-sm">Regresar</a>
     </div>
   </form>
